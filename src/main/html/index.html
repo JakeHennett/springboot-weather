@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Weather</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+
+    body {
+  background-color: lightgoldenrodyellow;
+  color: darkgoldenrod;
+}
+    </style>
+</head>
+<body>
+
+<h1>Weather</h1>
+<p>Please enter the GPS coordinates:</p>
+<div class="container">
+    <label for="latitude"><b>Latitude</b></label>
+    <input type="text" placeholder="35" name="latitude" id="latitude" required>
+
+    <label for="longitude"><b>Longitude</b></label>
+    <input type="text" placeholder="-82" name="longitude" id="longitude" required>
+
+    <button onclick="submit()">Search</button>
+  </div>
+
+<script>
+    function submit() {
+        var response = 
+        "Searching for current weather at " + document.getElementById("latitude").value
+        + "," + document.getElementById("longitude").value + "..."
+      alert(response);
+      //Call into endpoint methods here
+    }
+    </script>
+
+</body>
+</html>
