@@ -35,9 +35,9 @@ public class ConsumingRestApplication {
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
-			Quote quote = restTemplate.getForObject(
-					"https://api.scryfall.com/cards/random", Quote.class);
-			log.info(quote.toString());
+			MTGCard randomCard = restTemplate.getForObject(
+					"https://api.scryfall.com/cards/random", MTGCard.class);
+			log.info(randomCard.toString());
 		};
 	}
 }
