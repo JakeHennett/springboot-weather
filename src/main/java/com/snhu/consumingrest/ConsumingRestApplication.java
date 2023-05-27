@@ -23,11 +23,20 @@ public class ConsumingRestApplication {
 		return builder.build();
 	}
 
+	// @Bean
+	// public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+	// 	return args -> {
+	// 		Quote quote = restTemplate.getForObject(
+	// 				"http://localhost:8080/api/random", Quote.class);
+	// 		log.info(quote.toString());
+	// 	};
+	// }
+
 	@Bean
 	public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
 		return args -> {
 			Quote quote = restTemplate.getForObject(
-					"http://localhost:8080/api/random", Quote.class);
+					"https://api.scryfall.com/cards/random", Quote.class);
 			log.info(quote.toString());
 		};
 	}
