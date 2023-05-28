@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Weather</title>
   <meta charset="utf-8">
@@ -8,18 +9,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
-
     body {
-  background-color: lightgoldenrodyellow;
-  color: darkgoldenrod;
-}
-    </style>
+      background-color: lightgoldenrodyellow;
+      color: darkgoldenrod;
+    }
+  </style>
 </head>
+
 <body>
 
-<h1>Weather</h1>
-<p>Please enter the GPS coordinates:</p>
-<div class="container">
+  <h1>Weather</h1>
+  <p>Please enter the GPS coordinates:</p>
+  <div class="container">
     <label for="latitude"><b>Latitude</b></label>
     <input type="text" placeholder="35" name="latitude" id="latitude" required>
 
@@ -29,15 +30,16 @@
     <button onclick="submit()">Search</button>
   </div>
 
-<script>
+  <script>
     function submit() {
-        var response = 
+      var response =
         "Searching for current weather at " + document.getElementById("latitude").value
         + "," + document.getElementById("longitude").value + "..."
       alert(response);
       //Call into endpoint methods here
     }
-    </script>
+  </script>
 
 </body>
+
 </html>
