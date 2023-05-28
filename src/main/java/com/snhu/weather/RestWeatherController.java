@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 @RestController
 public class RestWeatherController {
@@ -46,16 +47,24 @@ public class RestWeatherController {
 
         //points - https://api.weather.gov/points/35,-82
         String pointsUri = "https://api.weather.gov/points/" + longitude + "," + latitude;
-        Point pointsResult = restTemplate.getForObject(pointsUri, Point.class);
+        String pointsStringResult = restTemplate.getForObject(pointsUri, String.class);
+        //JSONPObject pointsJSONResult = new JSONPObject(pointsStringResult, intsStringResult)
 
-        //forecast - https://api.weather.gov/gridpoints/{office}/{grid X},{grid Y}/forecast
-        String office = pointsResult.office;
-        String gridX = "";
-        String gridY = "";
-        String forecastUri = "https://api.weather.gov/gridpoints/" + office + "/" + gridX + "," + gridY + "/forecast";
-        Forecast forecastResult = restTemplate.getForObject(forecastUri, Forecast.class);
+        int urlLocationStart = pointsStringResult.indexOf("https://api.weather.gov/gridpoints");
+        int urlLocationEnd = pointsStringResult.indexOf("forecast", urlLocationStart);
+        String extractedURL = pointsStringResult.substring(urlLocationStart, urlLocationEnd+8);
+        String forecastResult = restTemplate.getForObject(extractedURL, String.class);
+        
 
-        String result = forecastResult.toString();
+        // //forecast - https://api.weather.gov/gridpoints/{office}/{grid X},{grid Y}/forecast
+        // String office = "";
+        // //pointsResult.office;
+        // String gridX = "";
+        // String gridY = "";
+        // String forecastUri = "https://api.weather.gov/gridpoints/" + office + "/" + gridX + "," + gridY + "/forecast";
+        // Forecast forecastResult = restTemplate.getForObject(forecastUri, Forecast.class);
+
+        String result = forecastResult;
         return result;
     }
 
