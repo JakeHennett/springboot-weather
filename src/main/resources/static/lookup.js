@@ -9,6 +9,8 @@ function submit() {
 }
 
 async function getForecast(latitude, longitude) {
+    // let latitude = document.getElementsByName('latitude').value;
+    // let longitude = document.getElementsByName('longitude').value;
 
     let forecastRequestString = "http://localhost:8080/weather/forecast/" + latitude + "/" + longitude;
     console.log(forecastRequestString);

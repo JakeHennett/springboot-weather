@@ -27,10 +27,9 @@
     <label for="longitude"><b>Longitude</b></label>
     <input type="text" placeholder="-82" name="longitude" id="longitude" required>
 
-    <button onclick="getForecast(
-      document.getElementsByTagName('latitude').value,
-      document.getElementsByTagName('longitude').value
-      )">Search</button>
+    <button onclick="getForecast(35, -82)">Search</button>
+    <!-- let latitude = document.getElementsByName('latitude').value;
+    let longitude = document.getElementsByName('longitude').value; -->
   </div>
 
   <script src="lookup.js"></script>
