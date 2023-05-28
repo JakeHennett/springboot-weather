@@ -12,14 +12,14 @@ public class WeatherApplication {
 		SpringApplication.run(WeatherApplication.class, args);
 	}
 
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
-	}
+	// @GetMapping("/hello")
+	// public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
+	// 	return String.format("Hello %s!", name);
+	// }
 
-	@GetMapping("/error")
-	public String error() {
-		return String.format("Oops.");
-	}
+	// @GetMapping("/error")
+	// public String error() {
+	// 	return String.format("Oops.");
+	// }
 
 }
