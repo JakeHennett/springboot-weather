@@ -9,8 +9,27 @@ function submit() {
 }
 
 async function getForecast(longitude, latitude) {
-    let result = await fetch(request);
-    let response = await result.json();
+
+    let forecastRequestString = "http://localhost:8080/weather/forecast/" + longitude + "/" + latitude;
+    console.log(forecastRequestString);
+    alert(forecastRequestString);
+
+    // let headers = new Headers([
+    //     ['Content-Type', 'application/json'],
+    //     ['Accept', 'application/json']
+    // ]);
+
+    // let request = new Request(forecastRequestString, {
+    //     method: 'GET',
+    //     headers: headers
+    // });
+    // console.log(request);
+
+    // let result = await fetch(request);
+    // //let response = await result.json(); 
+
+    // console.log(result);
+    // alert(result);
 }
 
 
