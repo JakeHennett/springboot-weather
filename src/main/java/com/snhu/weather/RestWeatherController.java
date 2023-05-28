@@ -49,6 +49,7 @@ public class RestWeatherController {
         String pointsStringResult = restTemplate.getForObject(pointsUri, String.class);
 
         // "forecast": "https://api.weather.gov/gridpoints/JAX/50,93/forecast"
+        // Use indexOf and substring to isolate the forecast url for the provided GPS coordinates.
         int urlLocationStart = pointsStringResult.indexOf("https://api.weather.gov/gridpoints");
         int urlLocationEnd = pointsStringResult.indexOf("forecast", urlLocationStart);
         String extractedURL = pointsStringResult.substring(urlLocationStart, urlLocationEnd+8);
