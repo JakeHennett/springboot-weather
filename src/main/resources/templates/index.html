@@ -26,10 +26,22 @@
 
     <label for="longitude"><b>Longitude</b></label>
     <input type="text" placeholder="-82" name="longitude" id="longitude" required>
+    
+    <!-- <button onclick="getForecast(35, -82)">Search</button> -->
+    
+    <button onclick="getForecast( document.getElementById('latitude').value, document.getElementById('longitude').value)">Search</button>
+    
+    <!-- 
+      let latitude = document.getElementsByName('latitude').value;
+    let longitude = document.getElementsByName('longitude').value;
+  
+    let id = document.getElementsByTagName('img')[art_index].attributes[2].value;
 
-    <button onclick="getForecast(35, -82)">Search</button>
-    <!-- let latitude = document.getElementsByName('latitude').value;
-    let longitude = document.getElementsByName('longitude').value; -->
+
+        var response = "Searching for current weather at " + document.getElementById("latitude").value
+        + "," + document.getElementById("longitude").value + "..."
+    alert(response);
+   -->
   </div>
 
   <script src="lookup.js"></script>
