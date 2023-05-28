@@ -31,21 +31,21 @@ public class RestWeatherController {
     }
 
     //http://localhost:8080/weather/points/31/-82
-    @GetMapping(value = "/weather/points/{longitude}/{latitude}")
-    private String getPointsByCoordinates(@PathVariable Long longitude, @PathVariable Long latitude) {
-        String uri = "https://api.weather.gov/points/" + longitude + "," + latitude;
+    @GetMapping(value = "/weather/points/{latitude}/{longitude}")
+    private String getPointsByCoordinates(@PathVariable Long latitude, @PathVariable Long longitude) {
+        String uri = "https://api.weather.gov/points/" + latitude + "," + longitude;
         RestTemplate restTemplate = new RestTemplate();
         String result = restTemplate.getForObject(uri, String.class);
         return result;
     }
     
     //http://localhost:8080/weather/forecast/31/-82
-    @GetMapping(value = "/weather/forecast/{longitude}/{latitude}")
-    private String getForecastByCoordinates(@PathVariable Long longitude, @PathVariable Long latitude) {
+    @GetMapping(value = "/weather/forecast/{latitude}/{longitude}")
+    private String getForecastByCoordinates(@PathVariable Long latitude, @PathVariable Long longitude) {
         RestTemplate restTemplate = new RestTemplate();
 
         //points - https://api.weather.gov/points/35,-82
-        String pointsUri = "https://api.weather.gov/points/" + longitude + "," + latitude;
+        String pointsUri = "https://api.weather.gov/points/" + latitude + "," + longitude;
         String pointsStringResult = restTemplate.getForObject(pointsUri, String.class);
 
         // "forecast": "https://api.weather.gov/gridpoints/JAX/50,93/forecast"

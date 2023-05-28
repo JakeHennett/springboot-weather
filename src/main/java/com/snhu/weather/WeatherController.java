@@ -35,14 +35,14 @@ public class WeatherController {
 		return "greeting";
 	}
 
-    //http://localhost:8080/weatherresults?longitude=34&latitude=-80
+    //http://localhost:8080/weatherresults?latitude=34&longitude=-80
     @GetMapping("/weatherresults")
 	public String weatherresults(
-        @RequestParam(name="longitude", required=false, defaultValue="35") String longitude,
         @RequestParam(name="latitude", required=false, defaultValue="-82") String latitude,
+        @RequestParam(name="longitude", required=false, defaultValue="35") String longitude,
         Model model) {
+        model.addAttribute("latitude", latitude);
 		model.addAttribute("longitude", longitude);
-		model.addAttribute("latitude", latitude);
 
 		return "weatherresults";
 	}
