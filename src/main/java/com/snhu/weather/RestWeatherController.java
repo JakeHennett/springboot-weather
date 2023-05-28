@@ -38,6 +38,17 @@ public class RestWeatherController {
         String result = restTemplate.getForObject(uri, String.class);
         return result;
     }
+    
+    //http://localhost:8080/weather/forecast/31/-82
+    @GetMapping(value = "/weather/forecast/{longitude}/{latitude}")
+    private String getForecastByCoordinates(@PathVariable Long longitude, @PathVariable Long latitude) {
+        String uri = "https://api.weather.gov/points/" + longitude + "," + latitude;
+        RestTemplate restTemplate = new RestTemplate();
+        String pointsResult = restTemplate.getForObject(uri, String.class);
+
+        String result = "output the forecast here";
+        return result;
+    }
 
     //Below paths are copied from the quotes example
     //https://github.com/spring-guides/quoters/blob/master/src/main/java/org/springframework/quoters/QuoteController.java
