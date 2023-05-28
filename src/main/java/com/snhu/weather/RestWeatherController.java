@@ -48,14 +48,17 @@ public class RestWeatherController {
         //points - https://api.weather.gov/points/35,-82
         String pointsUri = "https://api.weather.gov/points/" + longitude + "," + latitude;
         String pointsStringResult = restTemplate.getForObject(pointsUri, String.class);
-        //JSONPObject pointsJSONResult = new JSONPObject(pointsStringResult, intsStringResult)
 
+        // "forecast": "https://api.weather.gov/gridpoints/JAX/50,93/forecast"
         int urlLocationStart = pointsStringResult.indexOf("https://api.weather.gov/gridpoints");
         int urlLocationEnd = pointsStringResult.indexOf("forecast", urlLocationStart);
         String extractedURL = pointsStringResult.substring(urlLocationStart, urlLocationEnd+8);
         String forecastResult = restTemplate.getForObject(extractedURL, String.class);
-        
+        //http://localhost:8080/weather/forecast/35/-82 = https://api.weather.gov/gridpoints/GSP/78,51/forecast
+        //http://localhost:8080/weather/forecast/31/-82 = https://api.weather.gov/gridpoints/JAX/50,93/forecast
+        //http://localhost:8080/weather/forecast/30/-85 = https://api.weather.gov/gridpoints/TAE/58,65/forecast
 
+        // This would be dynamic and more reliable, but we aren't going to bother with JSON manipulation right now.
         // //forecast - https://api.weather.gov/gridpoints/{office}/{grid X},{grid Y}/forecast
         // String office = "";
         // //pointsResult.office;
@@ -67,33 +70,4 @@ public class RestWeatherController {
         String result = forecastResult;
         return result;
     }
-
-    //Below paths are copied from the quotes example
-    //https://github.com/spring-guides/quoters/blob/master/src/main/java/org/springframework/quoters/QuoteController.java
-    
-	// @GetMapping("/api")
-	// public List<QuoteResource> getAll() {
-
-	// 	return repository.findAll().stream()
-	// 		.map(quote -> new QuoteResource(quote, "success"))
-	// 		.collect(Collectors.toList());
-	// }
-
-	// @GetMapping("/api/{id}")
-	// public QuoteResource getOne(@PathVariable Long id) {
-
-	// 	return repository.findById(id)
-	// 		.map(quote -> new QuoteResource(quote, "success"))
-	// 		.orElse(new QuoteResource(NONE, "Quote " + id + " does not exist"));
-	// }
-
-	// @GetMapping("/api/random")
-	// public QuoteResource getRandomOne() {
-	// 	return getOne(nextLong(1, repository.count() + 1));
-	// }
-
-	// private long nextLong(long lowerRange, long upperRange) {
-	// 	return (long) (RANDOMIZER.nextDouble() * (upperRange - lowerRange)) + lowerRange;
-	// }
-
 }
