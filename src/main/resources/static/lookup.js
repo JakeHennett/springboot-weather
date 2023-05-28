@@ -9,12 +9,7 @@ function submit() {
 }
 
 async function getForecast(latitude, longitude) {
-    // let latitude = document.getElementsByName('latitude').value;
-    // let longitude = document.getElementsByName('longitude').value;
-
     let forecastRequestString = "http://localhost:8080/weather/forecast/" + latitude + "/" + longitude;
-    console.log(forecastRequestString);
-    // alert(forecastRequestString);
 
     let headers = new Headers([
         ['Content-Type', 'application/json'],
@@ -25,16 +20,11 @@ async function getForecast(latitude, longitude) {
         method: 'GET',
         headers: headers
     });
-    console.log(request);
-    // alert(request);
 
     let result = await fetch(request);
     let response = await result.json();
     let forecast = response.properties.periods[0].detailedForecast;
     alert(forecast);
-
-    // console.log(result);
-    // alert(result);
 }
 
 
