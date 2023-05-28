@@ -26,4 +26,23 @@ public class WeatherController {
         return "helloworld";
     }
 
+    //Example greeting endpoint with query parameters
+    //http://localhost:8080/greeting?name=hola
+    @GetMapping("/greeting")
+	public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+		model.addAttribute("name", name);
+		return "greeting";
+	}
+
+    
+    @GetMapping("/weatherresults")
+	public String weatherresults(
+        @RequestParam(name="longitude", required=false, defaultValue="35") String longitude,
+        @RequestParam(name="latitude", required=false, defaultValue="-82") String latitude,
+        Model model) {
+		model.addAttribute("longitude", longitude);
+		model.addAttribute("latitude", latitude);
+		return "weatherresults";
+	}
+
 }

@@ -37,4 +37,8 @@ public class RestWeatherController {
         String result = restTemplate.getForObject(uri, String.class);
         return result;
     }
+
+    public String hitFromElsewhere() {
+        return "You're looking at RestWeatherController";
+    }
 }
