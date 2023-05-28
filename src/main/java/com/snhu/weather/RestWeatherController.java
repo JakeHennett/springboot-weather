@@ -38,7 +38,4 @@ public class RestWeatherController {
         return result;
     }
 
-    public String hitFromElsewhere() {
-        return "You're looking at RestWeatherController";
-    }
 }

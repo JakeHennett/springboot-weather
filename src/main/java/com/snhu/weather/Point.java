@@ -1,8 +1,17 @@
 package com.snhu.weather;
 
-public class Point {
-    
-}
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public record Point (
+    Object properties
+    //do we need to create sub-fields here for the fields we care about?
+    //         "forecastOffice": "https://api.weather.gov/offices/GSP",
+//         "gridId": "GSP",
+//         "gridX": 79,
+//         "gridY": 53,
+//         "forecast": "https://api.weather.gov/gridpoints/GSP/79,53/forecast",
+    ) { }
 
 //example object
 // {
