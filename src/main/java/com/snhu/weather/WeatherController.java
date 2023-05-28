@@ -21,4 +21,9 @@ public class WeatherController {
         return "index";
     }
 
+    @RequestMapping(value = "/hello")
+    public String hello() {
+        return "helloworld";
+    }
+
 }
