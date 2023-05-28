@@ -42,11 +42,20 @@ public class RestWeatherController {
     //http://localhost:8080/weather/forecast/31/-82
     @GetMapping(value = "/weather/forecast/{longitude}/{latitude}")
     private String getForecastByCoordinates(@PathVariable Long longitude, @PathVariable Long latitude) {
-        String uri = "https://api.weather.gov/points/" + longitude + "," + latitude;
         RestTemplate restTemplate = new RestTemplate();
-        String pointsResult = restTemplate.getForObject(uri, String.class);
 
-        String result = "output the forecast here";
+        //points - https://api.weather.gov/points/35,-82
+        String pointsUri = "https://api.weather.gov/points/" + longitude + "," + latitude;
+        Point pointsResult = restTemplate.getForObject(pointsUri, Point.class);
+
+        //forecast - https://api.weather.gov/gridpoints/{office}/{grid X},{grid Y}/forecast
+        String office = pointsResult.office;
+        String gridX = "";
+        String gridY = "";
+        String forecastUri = "https://api.weather.gov/gridpoints/" + office + "/" + gridX + "," + gridY + "/forecast";
+        Forecast forecastResult = restTemplate.getForObject(forecastUri, Forecast.class);
+
+        String result = forecastResult.toString();
         return result;
     }
 
