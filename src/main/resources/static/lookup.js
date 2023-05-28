@@ -8,9 +8,9 @@ function submit() {
     //Call into endpoint methods here
 }
 
-async function getForecast(longitude, latitude) {
+async function getForecast(latitude, longitude) {
 
-    let forecastRequestString = "http://localhost:8080/weather/forecast/" + longitude + "/" + latitude;
+    let forecastRequestString = "http://localhost:8080/weather/forecast/" + latitude + "/" + longitude;
     console.log(forecastRequestString);
     alert(forecastRequestString);
 
